@@ -1,16 +1,115 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person & Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        form {
+            background: white;
+            padding: 15px;
+            display: inline-block;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h1>Person & Employee Details</h1>
+    <h2>Create a Person</h2>
+    <form id="person-form">
+        <input type="text" id="person-name" placeholder="Enter Name" required>
+        <input type="number" id="person-age" placeholder="Enter Age" required>
+        <button type="submit">Create Person</button>
+    </form>
+    <p id="person-output"></p>
+    <h2>Create an Employee</h2>
+    <form id="employee-form">
+        <input type="text" id="employee-name" placeholder="Enter Name" required>
+        <input type="number" id="employee-age" placeholder="Enter Age" required>
+        <input type="text" id="employee-title" placeholder="Enter Job Title" required>
+        <button type="submit">Create Employee</button>
+    </form>
+    <p id="employee-output"></p>
 
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            greet() {
+                const message = Hello, my name is ${this.name} and I am ${this.age} years old.;
+                console.log(message);
+                return message;
+            }
+        }
+
+        class Employee extends Person {
+            constructor(name, age, jobTitle) {
+                super(name, age);
+                this.jobTitle = jobTitle;
+            }
+
+            jobGreet() {
+                const message = Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.;
+                console.log(message);
+                return message;
+            }
+        }
+        window.Person = Person;
+        window.Employee = Employee;
+
+        document.getElementById("person-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("person-name").value;
+            const age = parseInt(document.getElementById("person-age").value);
+
+            const person = new Person(name, age);
+            document.getElementById("person-output").textContent = person.greet();
+        });
+
+        document.getElementById("employee-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("employee-name").value;
+            const age = parseInt(document.getElementById("employee-age").value);
+            const jobTitle = document.getElementById("employee-title").value;
+
+            const employee = new Employee(name, age, jobTitle);
+            document.getElementById("employee-output").textContent = employee.jobGreet();
+        });
+    </script>
 </body>
-
 </html>
