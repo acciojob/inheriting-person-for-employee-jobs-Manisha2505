@@ -1,4 +1,6 @@
 class Person {
+	var name="Jonh";
+	var age=25;
     constructor(name, age) {
         this.name = name;
         this.age = age;
