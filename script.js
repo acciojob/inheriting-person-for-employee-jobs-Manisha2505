@@ -1,6 +1,6 @@
 function Person(name, age) {
-    this.name = name;
-    this.age = age;
+    this.name = "john";
+    this.age = 28;
 }
 
 Person.prototype.greet = function () {
