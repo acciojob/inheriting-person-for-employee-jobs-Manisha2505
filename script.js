@@ -1,9 +1,8 @@
 class Person {
-	var name="Jonh";
-	var age=25;
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
+
+    constructor(name: "Mani", age: 28) {
+        this.name = name
+        this.age = age
     }
 
     greet() {
@@ -12,7 +11,7 @@ class Person {
 }
 
 class Employee extends Person {
-    constructor(name, age, jobTitle) {
+    constructor(name: "Mani", age: 28, jobTitle: "Manager") {
         super(name, age);
         this.jobTitle = jobTitle;
     }
